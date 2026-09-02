@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Danh Mục Sản Phẩm | Cao Nguyên Cafe</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wgh…00;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    .product-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--color-gold);
+      margin-bottom: 16px;
+    }
+    
+    .badge {
+      display: inline-block;
+      padding: 5px 12px;
+      background: var(--color-gold);
+      color: var(--bg-deep-forest);
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+    
+    .btn-block {
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 12px 20px;
+      cursor: pointer;
+      border: none;
+    }
+    
+    .search-filter-section {
+      max-width: 750px;
+      margin-top: 15px;
+      margin-bottom: 45px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+    
+    .search-input {
+      width: 100%;
+      height: 56px;
+      padding: 0 25px;
+      font-size: 1.05rem;
+      border: 2px solid var(--color-gold);
+      border-radius: 30px;
+      background: #ffffff;
+      color: #111111;
+      outline: none;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    }
+    
+    .search-input::placeholder {
+      color: #666666;
+    }
+    
+    .search-input:focus {
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.4);
+      border-color: #b8860b;
+    }
+    
+    .quick-tags {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 20px;
+    }
+    
+    .tag-btn {
+      background: #ffffff;
+      border: 1px solid var(--color-gold);
+      color: #333333;
+      padding: 8px 20px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .tag-btn:hover, .tag-btn.active {
+      background: var(--color-gold);
+      color: var(--bg-deep-forest);
+      font-weight: 700;
+    }
+    
+    .no-results {
+      display: none;
+      text-align: center;
+      font-size: 1.1rem;
+      color: #ccc;
+      padding: 50px 0;
+      grid-column: 1 / -1;
+    }
+    
+    .promo-card {
+      background: var(--bg-deep-forest);
+      padding: 30px 20px;
+      border-radius: 8px;
+      border: 1px dashed var(--color-gold);
+      text-align: center;
+    }
+    
+    .promo-card h4 {
+      color: var(--color-gold);
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+    
+    .promo-card p {
+      font-size: 0.95rem;
+line-height: 1.5;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">CAO NGUYÊN CAFE</div>
+    <nav class="nav-links">
+      <a href="index.html">Trang Chủ</a>
+      <a href="about.html">Giới Thiệu</a>
+      <a href="products.html" class="active">Sản Phẩm</a>
+      <a href="sourcing.html">Vùng Nguyên Liệu</a>
+      <a href="news.html">Tin Tức</a>
+      <a href="contact.html">Liên Hệ</a>
+      <a href="cart.html">Giỏ Hàng</a>
+    </nav>
+  </header>
+
+  <section class="cta-banner" style="margin-top: 70px; background-image: linear-gradient(rgba(0,10,6,0.85), rgba(0,10,6,0.85)), url('../images/a5.jpg'); padding: 90px 20px;">
+    <h1 style="font-family: var(--font-title); font-size: 2.8rem; color: var(--color-gold);">Tinh Hoa Cà Phê Cao Nguyên</h1>
+    <p style="color: var(--color-cream); font-size: 1.1rem; max-width: 650px; margin: 10px auto 0;">Khám phá trọn vẹn hương vị cà phê mộc đậm đà cùng các dòng pha chế sáng tạo độc đáo</p>
+  </section>
+
+  <section class="section-padding">
+    <h2 class="section-title">Danh Mục Sản Phẩm</h2>
+    <div class="search-filter-section">
+      <input type="text" id="productSearch" class="search-input" placeholder="🔍 Tìm kiếm món yêu thích (vd: Cà phê muối, Cold brew, Matcha, Sữa hạt...)...">
+      <div class="quick-tags">
+        <span style="font-weight: 600; color: #444;">Gợi ý:</span>
+        <button class="tag-btn active" onclick="filterCategory('all', this)">Tất cả</button>
+        <button class="tag-btn" onclick="filterCategory('popular', this)">Nổi Bật</button>
+        <button class="tag-btn" onclick="filterCategory('cold brew', this)">Cold Brew</button>
+        <button class="tag-btn" onclick="filterCategory('espresso', this)">Espresso & Latte</button>
+        <button class="tag-btn" onclick="filterCategory('phin', this)">Phin Giấy</button>
+      </div>
+    </div>
+
+    <div class="grid-3" id="productList"></div>
+    <div class="no-results" id="noResults">Không tìm thấy sản phẩm phù hợp. Vui lòng thử từ khóa khác!</div>
+  </section>
+
+  <section class="section-padding bg-alt">
+    <h2 class="section-title">Ưu Đãi & Mã Giảm Giá Đang Áp Dụng</h2>
+    <p class="section-subtitle">Sao chép mã bên dưới và nhập vào Form liên hệ hoặc khi đặt hàng qua Zalo</p>
+    
+    <div class="grid-3">
+      <div class="promo-card">
+        <h4>MÃ: CAONGUYEN15</h4>
+        <p>Giảm ngay 15% cho đơn hàng trải nghiệm sản phẩm mới đầu tiên</p>
+        <button class="btn-primary" onclick="alert('Đã sao chép mã CAONGUYEN15')" style="padding: 10px 20px; font-size: 0.85rem;">Sao Chép Mã</button>
+      </div>
+      <div class="promo-card">
+        <h4>MÃ: FREESHIP2026</h4>
+<p>Miễn phí vận chuyển toàn quốc cho đơn hàng từ 300.000đ</p>
+        <button class="btn-primary" onclick="alert('Đã sao chép mã FREESHIP2026')" style="padding: 10px 20px; font-size: 0.85rem;">Sao Chép Mã</button>
+      </div>
+      <div class="promo-card">
+        <h4>MÃ: TESTMAU0D</h4>
+        <p>Tặng kèm 1 túi Cold Brew dùng thử cho mọi đơn hàng hôm nay</p>
+        <button class="btn-primary" onclick="alert('Đã sao chép mã TESTMAU0D')" style="padding: 10px 20px; font-size: 0.85rem;">Sao Chép Mã</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="floating-widgets">
+    <a href="https://zalo.me/0866993051" target="_blank" class="widget-btn zalo" title="Chat Zalo Nhanh">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo Chat">
+    </a>
+    <a href="https://m.me/caonguyencafe" target="_blank" class="widget-btn facebook" title="Chat Messenger Nhanh">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg" alt="Facebook Chat">
+    </a>
+  </div>
+
+  <footer>
+    <p><strong>CÔNG TY TNHH CAO NGUYÊN CAFE VIỆT NAM</strong></p>
+    <p>Địa chỉ trụ sở: 54/17 Ama Jhao, TP. Buôn Ma Thuột, Đắk Lắk | Hotline: 0866993051</p>
+    <p>&copy; 2026 Cao Nguyên Cafe. Tất cả quyền được bảo lưu.</p>
+  </footer>
+  <script src="../js/script.js"></script>
+</body>
+</html>

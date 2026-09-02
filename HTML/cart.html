@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ Hàng & Đặt Hàng | Cao Nguyên Cafe</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wgh…00;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    
+    .cart-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+    .cart-table th, .cart-table td {
+      padding: 15px;
+      text-align: left;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      font-size: 1.5rem;
+    }
+    .cart-table th {
+      color: var(--color-gold);
+      font-family: var(--font-title);
+      font-size: 1,3rem;
+    }
+    .vat-box {
+      background-color: var(--bg-pine-bark);
+      padding: 25px;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.2);
+      margin-top: 25px;
+    }
+    .vat-fields {
+      display: none;
+      margin-top: 20px;
+    }
+    .qty-btn {
+      padding: 2px 8px;
+      background: var(--color-gold);
+      border: none;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    .remove-btn {
+      color: #ff4d4d;
+      cursor: pointer;
+      margin-left: 10px;
+      background: none;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">CAO NGUYÊN CAFE</div>
+    <nav class="nav-links">
+      <a href="index.html">Trang Chủ</a>
+      <a href="about.html">Giới Thiệu</a>
+      <a href="products.html">Sản Phẩm</a>
+      <a href="sourcing.html">Vùng Nguyên Liệu</a>
+      <a href="news.html">Tin Tức</a>
+      <a href="contact.html">Liên Hệ</a>
+      <a href="cart.html" class="active">Giỏ Hàng</a>
+    </nav>
+  </header>
+
+  <section class="section-padding" style="margin-top: 70px;">
+    <h2 class="section-title">Giỏ Hàng Của Bạn</h2>
+    <p class="section-subtitle"  >Kiểm tra thông tin sản phẩm và tùy chọn xuất hóa đơn VAT cho doanh nghiệp</p>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Sản Phẩm</th>
+          <th>Đơn Giá</th>
+          <th>Số Lượng</th>
+          <th>Thành Tiền</th>
+          <th>Thao Tác</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- JS sẽ tự động hiển thị sản phẩm ở đây -->
+      </tbody>
+    </table>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+      
+      <div class="vat-box">
+        <h3 style="color: var(--color-gold); font-family: var(--font-title); margin-bottom: 15px; font-size: 1.7rem;">Tùy Chọn Đặt Hàng</h3>
+        
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; color: var(--color-gold); margin-bottom: 8px; font-size: 1.2rem;">Khung Giờ Giao Hàng Dự Kiến</label>
+<select style="width: 100%; padding: 15px; background-color: var(--bg-deep-forest); border: 2px solid rgba(212,175,55,0.3); color: var(--color-cream); border-radius: 5px; font-size: 1,2rem;">
+            <option>Sáng (08:00 - 12:00)</option>
+            <option>Chiều (13:30 - 17:30)</option>
+            <option>Giao gấp trong 2h (Nội thành)</option>
+          </select>
+        </div>
+
+        <div style="margin-top: 20px; border-top: 1px solid rgba(212,175,55,0.2); padding-top: 15px;">
+          <label style="cursor: pointer; display: flex; align-items: center; gap: 10px;">
+            <input type="checkbox" id="vatCheckbox" onchange="toggleVAT()">
+            <span style="color: var(--color-gold); font-weight: 600;">Yêu cầu xuất hóa đơn VAT (+8%)</span>
+          </label>
+
+          <div id="vatFields" class="vat-fields">
+            <input type="text" placeholder="Tên Công Ty" style="width: 100%; padding: 10px; margin-bottom: 10px; background-color: var(--bg-deep-forest); border: 1px solid rgba(212,175,55,0.3); color: var(--color-cream); border-radius: 4px;">
+            <input type="text" placeholder="Mã Số Thuế" style="width: 100%; padding: 10px; margin-bottom: 10px; background-color: var(--bg-deep-forest); border: 1px solid rgba(212,175,55,0.3); color: var(--color-cream); border-radius: 4px;">
+            <input type="email" placeholder="Email nhận hóa đơn điện tử" style="width: 100%; padding: 10px; background-color: var(--bg-deep-forest); border: 1px solid rgba(212,175,55,0.3); color: var(--color-cream); border-radius: 4px;">
+          </div>
+        </div>
+      </div>
+
+      <div class="vat-box" style="text-align: right;">
+        <h3 style="color: var(--color-gold); font-family: var(--font-title); margin-bottom: 15px; text-align: left; font-size: 2rem;">Tổng Đơn Hàng</h3>
+        <p style="margin-bottom: 10px;">Tạm tính: <strong id="subtotal-price">0 đ</strong></p>
+        <p style="margin-bottom: 10px;">Thuế VAT (8%): <strong id="vat-price">0 đ</strong></p>
+        <p style="margin-bottom: 10px;">Phí vận chuyển: <strong>Miễn phí</strong></p>
+        <h2 style="color: var(--color-gold); margin-top: 15px; margin-bottom: 25px;">Tổng cộng: <span id="grand-total-price">0 đ</span></h2>
+
+        <button class="btn-primary" style="width: 100%; padding: 15px;" onclick="checkout()">Xác Nhận Đặt Hàng</button>
+      </div>
+
+    </div>
+  </section>
+  <div class="floating-widgets">
+    <a href="https://zalo.me/0866993051" target="_blank" class="widget-btn zalo" title="Chat Zalo Nhanh">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo Chat">
+    </a>
+    <a href="https://m.me/caonguyencafe" target="_blank" class="widget-btn facebook" title="Chat Messenger Nhanh">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg" alt="Facebook Chat">
+    </a>
+  </div>
+
+  <footer>
+    <p><strong>CÔNG TY TNHH CAO NGUYÊN CAFE VIỆT NAM</strong></p>
+    <p>Địa chỉ trụ sở: 54/17 Ama Jhao, TP. Buôn Ma Thuột, Đắk Lắk | Hotline: 0855993051</p>
+    <p>&copy; 2026 Cao Nguyên Cafe. Tất cả quyền được bảo lưu.</p>
+  </footer>
+
+  <script>
+    // Lấy giỏ hàng từ localStorage
+    function getCart() {
+      return JSON.parse(localStorage.getItem('cart')) || [];
+    }
+
+    // Lưu giỏ hàng vào localStorage
+    function saveCart(cart) {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    }
+// Hiển thị danh sách sản phẩm và tính tổng tiền
+    function renderCart() {
+      const cart = getCart();
+      const tbody = document.getElementById('cart-items');
+      tbody.innerHTML = '';
+
+      if (cart.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="5" style="text-align:center; padding: 20px;">Giỏ hàng của bạn đang trống.</td></tr>`;
+        document.getElementById('subtotal-price').innerText = '0 đ';
+        document.getElementById('vat-price').innerText = '0 đ';
+        document.getElementById('grand-total-price').innerText = '0 đ';
+        return;
+      }
+
+      let subtotal = 0;
+
+      cart.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td style="display: flex; align-items: center; gap: 15px;">
+            <img src="${item.image}" alt="${item.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+            <span>${item.name}</span>
+          </td>
+          <td>${item.price.toLocaleString('vi-VN')} đ</td>
+          <td>
+            <button class="qty-btn" onclick="changeQuantity(${index}, -1)">-</button>
+            <span style="margin: 0 8px;">${item.quantity}</span>
+            <button class="qty-btn" onclick="changeQuantity(${index}, 1)">+</button>
+          </td>
+          <td style="color: var(--color-gold); font-weight: 700;">${itemTotal.toLocaleString('vi-VN')} đ</td>
+          <td>
+            <button class="remove-btn" onclick="removeItem(${index})">Xóa</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      calculateTotal(subtotal);
+    }
+
+    // Thay đổi số lượng
+    function changeQuantity(index, delta) {
+      let cart = getCart();
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      saveCart(cart);
+    }
+
+    // Xóa sản phẩm
+    function removeItem(index) {
+      let cart = getCart();
+      cart.splice(index, 1);
+      saveCart(cart);
+    }
+
+    // Bật/tắt VAT và tính tổng
+    function toggleVAT() {
+      const vatCheckbox = document.getElementById('vatCheckbox');
+      document.getElementById('vatFields').style.display = vatCheckbox.checked ? 'block' : 'none';
+      renderCart();
+    }
+
+    // Tính toán tổng tiền
+    function calculateTotal(subtotal) {
+      const isVatChecked = document.getElementById('vatCheckbox').checked;
+      const vat = isVatChecked ? subtotal * 0.08 : 0;
+      const grandTotal = subtotal + vat;
+
+      document.getElementById('subtotal-price').innerText = subtotal.toLocaleString('vi-VN') + ' đ';
+      document.getElementById('vat-price').innerText = vat.toLocaleString('vi-VN') + ' đ';
+      document.getElementById('grand-total-price').innerText = grandTotal.toLocaleString('vi-VN') + ' đ';
+    }
+
+    function checkout() {
+const cart = getCart();
+      if (cart.length === 0) {
+        alert('Giỏ hàng trống!');
+        return;
+      }
+      alert('Đã gửi đơn hàng thành công! Nhân viên sẽ gọi điện xác nhận trong 15 phút.');
+      localStorage.removeItem('cart');
+      renderCart();
+    }
+
+    // Tự động chạy khi mở trang
+    document.addEventListener('DOMContentLoaded', renderCart);
+  </script>
+</body>
+</html>

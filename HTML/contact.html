@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên Hệ & Hệ Thống Chi Nhánh | Cao Nguyên Cafe</title>
+
+  <link rel="stylesheet" href="../css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Cột Liên hệ & Form */
+    .form-group {
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--color-gold);
+      font-weight: 500;
+    }
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      background-color: var(--bg-deep-forest);
+      border: 3px solid rgba(212, 175, 55, 0.3);
+      border-radius: 20px;
+      color: var(--color-cream);
+      font-family: var(--font-body);
+      font-size: 1.1rem;
+    }
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-gold);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">CAO NGUYÊN CAFE</div>
+    <nav class="nav-links">
+      <a href="index.html">Trang Chủ</a>
+      <a href="about.html">Giới Thiệu</a>
+      <a href="products.html">Sản Phẩm</a>
+      <a href="sourcing.html">Vùng Nguyên Liệu</a>
+      <a href="news.html">Tin Tức</a>
+      <a href="contact.html" class="active">Liên Hệ</a>
+      <a href="cart.html">Giỏ Hàng</a>
+    </nav>
+  </header>
+
+  <section class="cta-banner" style="margin-top: 70px; background-image: linear-gradient(rgba(0,10,6,0.85),
+   rgba(0,10,6,0.85)), url('../images/a9.jpg'); padding: 90px 20px;">
+    <h1 style="font-family: var(--font-title); font-size: 3rem; color: var(--color-gold);">Kết Nối Với Cao Nguyên Cafe</h1>
+    <p style="color: var(--color-cream); font-size: 1.5rem; max-width: 650px; margin: 10px auto 0;">
+      Chúng tôi luôn sẵn sàng hỗ trợ tư vấn gu cà phê, báo giá sỉ và hợp tác OEM</p>
+  </section>
+
+  <section class="section-padding">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px;">
+      <div style="background-color: var(--bg-pine-bark); padding: 35px; border-radius: 10px; border: 5px solid rgba(212, 175, 60, 0.2);">
+        <h3 style="font-family: var(--font-title); color: var(--color-gold); font-size: 2.05rem; margin-bottom: 20px;">Gửi Yêu Cầu Tư Vấn</h3>
+        <form onsubmit="event.preventDefault(); alert('Cảm ơn bạn! Chúng tôi đã nhận được thông tin và sẽ liên hệ lại trong vòng 24h.');">
+          <div class="form-group">
+            <label>Họ và tên *</label>
+            <input type="text" class="form-control" placeholder="Nguyễn Văn A" required>
+          </div>
+          <div class="form-group">
+            <label>Số điện thoại / Zalo *</label>
+            <input type="tel" class="form-control" placeholder="0901234567" required>
+          </div>
+          <div class="form-group">
+            <label>Nhu cầu hợp tác</label>
+            <select class="form-control">
+              <option>Mua cà phê dùng cho cá nhân/gia đình</option>
+              <option>Nhận báo giá cà phê sỉ cho quán</option>
+              <option>Tư vấn gia công OEM thương hiệu riêng</option>
+              <option>Đăng ký nhận mẫu thử miễn phí</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Lời nhắn / Ghi chú</label>
+            <textarea class="form-control" rows="4" placeholder="Nhập địa chỉ nhận mẫu thử hoặc ghi chú thêm..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%;">Gửi Yêu Cầu Nhanh</button>
+        </form>
+      </div>
+
+      <div>
+        <h3 style="font-family: var(--font-title); color: var(--color-gold); font-size: 1.6rem; margin-bottom: 20px;">Thông Tin Trụ Sở</h3>
+        <p style="margin-bottom: 12px;font-size: 1.5rem;">📍 <strong>Địa chỉ:</strong> 54/17 Ama Jhao, TP. Buôn Ma Thuột, Tỉnh Đắk Lắk</p>
+        <p style="margin-bottom: 12px;font-size: 1.5rem">📞 <strong>Hotline / Zalo:</strong> 0866993051</p>
+        <p style="margin-bottom: 12px;font-size: 1.5rem">✉️ <strong>Email:</strong> thu147617@gmail.com</p>
+        <p style="margin-bottom: 25px;font-size: 1.5rem;">⏰ <strong>Giờ làm việc:</strong> 08:00 - 18:00 (Từ Thứ 2 đến Chủ Nhật)</p>
+
+        <div style="width: 100%; height: 500px; border-radius: 8px; overflow: hidden; border: 1px solid var(--color-gold);">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3892.368305533879!2d108.064183!3d12.689367299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f7c58b12fb7f%3A0x4f15f6fa50f95ce7!2zNTdhIEFtYSBKaGFvLCBUw6JuIEzhuq1wLCDEkOG6r2sgTOG6r2ssIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1787547650228!5m2!1svi!2s" 
+          width="850" height="550" 
+          style="border:0;" 
+          allowfullscreen="" loading="lazy" 
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="floating-widgets">
+    <a href="https://zalo.me/0866993051" target="_blank" class="widget-btn zalo" title="Chat Zalo Nhanh">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Icon_of_Zalo.svg" alt="Zalo Chat">
+    </a>
+    <a href="https://m.me/caonguyencafe" target="_blank" class="widget-btn facebook" title="Chat Messenger Nhanh">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/be/Facebook_Messenger_logo_2020.svg" alt="Facebook Chat">
+    </a>
+  </div>
+
+  <footer>
+    <p><strong>CÔNG TY TNHH CAO NGUYÊN CAFE VIỆT NAM</strong></p>
+    <p>Địa chỉ trụ sở: 54/17 Ama Jhao, TP. Buôn Ma Thuột, Đắk Lắk | Hotline: 0866993051</p>
+    <p>&copy; 2026 Cao Nguyên Cafe. Tất cả quyền được bảo lưu.</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
